@@ -4,11 +4,23 @@
     <link rel="stylesheet" href="./css/style.css">
     <meta charset="utf-8">
     <title>BOOLFLIX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   </head>
   <body>
     <div class="app">
       <input v-model="actualSearch" type="text" >
       <button type="button" name="button" @click="movieSrc()">cerca</button>
+      <button type="button"  @click="getStars()">stelle</button>
+      <div class="container">
+        <ul>
+          <li v-for="picture in picturesArray">
+            Titolo:{{picture.title}}  Titolo Originale:{{picture.original_title}}  Lingua originale:{{picture.original_language}}
+            <i class="fas fa-star" v-for="n in getStars(picturesArray)"></i>
+           <i class="far fa-star" v-for="n in 5 - getStars(picturesArray)"></i>
+          </li>
+
+        </ul>
+      </div>
     </div>
 
     <!-- production version, optimized for size and speed -->
