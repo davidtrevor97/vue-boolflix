@@ -10,13 +10,22 @@
     <div class="app">
       <input v-model="actualSearch" type="text" >
       <button type="button" name="button" @click="movieSrc()">cerca</button>
-      <button type="button"  @click="getStars()">stelle</button>
       <div class="container">
         <ul>
           <li v-for="picture in picturesArray">
-            Titolo:{{picture.title}}  Titolo Originale:{{picture.original_title}}  Lingua originale:{{picture.original_language}}
+            <div v-if="picture.original_language === 'en'" >
+              <img src="./img/en.png" alt="en">
+            </div>
+            <div v-else-if="picture.original_language === 'it'" >
+              <img src="./img/it.png" alt="it">
+            </div>
+            <div v-else>
+              Lingua: {{picture.original_language}}
+            </div>
+            Titolo:{{picture.title}}  Titolo Originale:{{picture.original_title}}
             <i class="fas fa-star" v-for="n in getStars(picturesArray)"></i>
            <i class="far fa-star" v-for="n in 5 - getStars(picturesArray)"></i>
+
           </li>
 
         </ul>
