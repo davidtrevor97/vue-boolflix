@@ -7,13 +7,14 @@
   </head>
   <body>
     <div class="app">
+      <input v-model="actualSearch" type="text" >
+      <button type="button" name="button" @click="movieSearch()">cerca</button>
     </div>
-
 
     <!-- production version, optimized for size and speed -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <!-- AXIOS -->
-    <script type="text/javascript" scr="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- JAVASCRIPT -->
     <script type="text/javascript" src="./js/main.js"></script>
   </body>

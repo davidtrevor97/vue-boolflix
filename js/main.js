@@ -9,14 +9,23 @@
 const app = new Vue({
   el:".app",
   data:{
-  },
-  created(){
-    axios.get("https://api.themoviedb.org/3/movie/76341?api_key=180223961313acb0a2739bfabe754841")
-    .then( result => {
-    })
-    .catch( result => {});
+    actualSearch: "",
   },
   methods:{
+    movieSearch(){
 
+    }
   },
+  computed:{
+    movieSearch(){
+      axios.get("https://api.themoviedb.org/3/movie/76341?api_key=180223961313acb0a2739bfabe754841")
+      .then( result => {
+        return result.filter( (movie) => {
+          return movie.title.match(this.actualSearch)
+        })
+      })
+      .catch( result => {});
+
+    }
+  }
 });
