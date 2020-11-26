@@ -31,40 +31,25 @@ const app = new Vue({
       this.errored = true
     } );
   },
-  seriesSrc(){
-    axios.get("https://api.themoviedb.org/3/search/tv" , {
-      params: {
-        api_key: "180223961313acb0a2739bfabe754841",
-        query: this.actualSearch,
-      }
-    })
-    .then( result => {
-    this.filmsArray = this.results.concat(result);
-    return this.results.concat(result);
-  })
-  .catch( error => {
-    console.log(error)
-    this.errored = true
-  } );
-  },
-    imgSrc(){
-      for (var i = 0; i < this.filmsArray.length; i++) {
-      pictureUrl =  this.filmsArray[i].poster_path;
-      this.picturesArray.push(pictureUrl)
-      console.log(this.picturesArray);
-  }
-  },
    getStars(vote){
        return Math.floor(vote / 2);
    },
   }
 });
 
-// axios.get("https://image.tmdb.org/t/p/"+"w300"+pictureUrl)
-// .then( result => {
-//   console.log(result.data);
+// seriesSrc(){
+//   axios.get("https://api.themoviedb.org/3/search/tv" , {
+//     params: {
+//       api_key: "180223961313acb0a2739bfabe754841",
+//       query: this.actualSearch,
+//     }
+//   })
+//   .then( result => {
+//   this.filmsArray = this.results.concat(result);
+//   return this.results.concat(result);
 // })
 // .catch( error => {
-// console.log(error)
-// this.errored = true
+//   console.log(error)
+//   this.errored = true
 // } );
+// },

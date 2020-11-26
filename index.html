@@ -9,17 +9,17 @@
   <body>
     <div class="app">
       <input v-model="actualSearch" type="text" >
-      <button type="button" name="button" @click="movieSrc();seriesSrc();imgSrc()" >cerca</button>
+      <button type="button" name="button" @click="movieSrc()" >cerca</button>
       <button type="button" name="button" >img</button>
       <div class="container">
         <ul>
           <li v-for="(film,index) in filmsArray" >
-            <img :src="'https://image.tmdb.org/t/p/'+'w300'+ picturesArray[index]">
+            <img id="moviePoster" :src="'https://image.tmdb.org/t/p/'+'w300'+film.poster_path">
             <div v-if="film.original_language === 'en'" >
-                Lingua:<img src="./img/en.png" alt="en">
+                Lingua:<img class="movieLanguage" src="./img/en.png" alt="en">
             </div>
             <div v-else-if="film.original_language === 'it'" >
-                Lingua:<img src="./img/it.png" alt="it">
+                Lingua:<img class="movieLanguage" src="./img/it.png" alt="it">
             </div>
             <div v-else>
               Lingua: {{film.original_language}}
