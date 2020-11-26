@@ -8,12 +8,19 @@
   </head>
   <body>
     <div class="app">
-      <input v-model="actualSearch" type="text" >
-      <button type="button" name="button" @click="movieSrc()" >cerca</button>
-      <button type="button" name="button" >img</button>
+      <header>
+        <div >
+          <input v-model="actualSearch" type="text" v-on:keyup.enter="movieSrc()" >
+          <i class="fas fa-search" @click="movieSrc()"></i>
+        </div>
+      </header>
+      <div class="placeholder">
+
+      </div>
       <div class="container">
         <ul>
           <li v-for="(film,index) in filmsArray" >
+
             <img id="moviePoster" :src="'https://image.tmdb.org/t/p/'+'w300'+film.poster_path">
             <div v-if="film.original_language === 'en'" >
                 Lingua:<img class="movieLanguage" src="./img/en.png" alt="en">
@@ -25,7 +32,7 @@
               Lingua: {{film.original_language}}
             </div>
             <span v-if="film.title">Titolo:{{film.title}}</span>
-            <span v-if="film.original_title">Titolo:{{film.original_title}}</span>
+            <span v-if="film.original_title">Titolo originale:{{film.original_title}}</span>
             <i class="fas fa-star" v-for="n in getStars(film.vote_average)"></i>
            <i class="far fa-star" v-for="n in 5 - getStars(film.vote_average)"></i>
 
