@@ -9,22 +9,25 @@
   <body>
     <div class="app">
       <input v-model="actualSearch" type="text" >
-      <button type="button" name="button" @click="movieSrc()">cerca</button>
+      <button type="button" name="button" @click="movieSrc()" @click="seriesSrc()"  >cerca</button>
+      <button type="button" name="button" @click="imgSrc()">img</button>
       <div class="container">
         <ul>
-          <li v-for="picture in picturesArray">
-            <div v-if="picture.original_language === 'en'" >
-              <img src="./img/en.png" alt="en">
+          <li v-for="film in filmsArray">
+            <img alt="">
+            <div v-if="film.original_language === 'en'" >
+                Lingua:<img src="./img/en.png" alt="en">
             </div>
-            <div v-else-if="picture.original_language === 'it'" >
-              <img src="./img/it.png" alt="it">
+            <div v-else-if="film.original_language === 'it'" >
+                Lingua:<img src="./img/it.png" alt="it">
             </div>
             <div v-else>
-              Lingua: {{picture.original_language}}
+              Lingua: {{film.original_language}}
             </div>
-            Titolo:{{picture.title}}  Titolo Originale:{{picture.original_title}}
-            <i class="fas fa-star" v-for="n in getStars(picturesArray)"></i>
-           <i class="far fa-star" v-for="n in 5 - getStars(picturesArray)"></i>
+            <span v-if="film.title">Titolo:{{film.title}}</span>
+            <span v-if="film.original_title">Titolo:{{film.original_title}}</span>
+            <i class="fas fa-star" v-for="n in getStars(film.vote_average)"></i>
+           <i class="far fa-star" v-for="n in 5 - getStars(film.vote_average)"></i>
 
           </li>
 
