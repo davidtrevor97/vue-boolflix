@@ -50,14 +50,8 @@ const app = new Vue({
     imgSrc(){
       for (var i = 0; i < this.filmsArray.length; i++) {
       pictureUrl =  this.filmsArray[i].poster_path;
-      axios.get("https://image.tmdb.org/t/p/"+"w300"+pictureUrl)
-      .then( result => {
-        console.log(result.data);
-    })
-    .catch( error => {
-      console.log(error)
-      this.errored = true
-    } );
+      this.picturesArray.push(pictureUrl)
+      console.log(this.picturesArray);
   }
   },
    getStars(vote){
@@ -65,3 +59,12 @@ const app = new Vue({
    },
   }
 });
+
+// axios.get("https://image.tmdb.org/t/p/"+"w300"+pictureUrl)
+// .then( result => {
+//   console.log(result.data);
+// })
+// .catch( error => {
+// console.log(error)
+// this.errored = true
+// } );
