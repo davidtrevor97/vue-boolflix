@@ -37,7 +37,7 @@ header div{
   left: 50%;
   transform: translateX(-50%);
   height: 100vh;
-  width: 80vw;
+  width: 82vw;
   background-color: #171d22;
   z-index: 0;
 }
@@ -53,16 +53,13 @@ header div{
 }
 .container li{
   z-index:1;
-  width: 150px;
+  width: 200px;
   margin:20px;
   list-style: none;
 }
-.container li img{
-  z-index:1;
+.posterContainer img{
   width: 100%;
-}
-.container li div{
-  display: inline-block;
+  transition: 0.5s;
 }
 .container li .movieLanguage{
   width: 20px;
@@ -75,4 +72,19 @@ header div{
 .container i{
   color: white;
   font-size: 15px;;
+}
+.posterContainer div{
+  position: absolute;
+  max-width: 180px;
+  margin: 0 0 0 10px;
+  z-index: 1;
+  display: none;
+}
+/* HOVER */
+.posterContainer:hover div{
+  display: block;
+  transition: 0.5s;
+}
+.posterContainer:hover img{
+  opacity: 0.3;
 }
