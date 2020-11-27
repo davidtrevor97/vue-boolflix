@@ -52,7 +52,7 @@ const app = new Vue({
      console.log(actualGenre);
      console.log(this.filmsArray);
      this.filmsArray = this.filmsArray.filter( (film) => {
-       return film.genre_ids === actualGenre;
+       return film.genre_ids.includes(actualGenre) ;
      })
    },
    getActualGenre(genre){
