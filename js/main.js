@@ -14,6 +14,7 @@ const app = new Vue({
     pictureUrl: "",
     picturesArray: [],
     genresArray:[],
+    actualGenre: "",
   },
   methods:{
     movieSrc(){
@@ -39,13 +40,22 @@ const app = new Vue({
      axios.get("https://api.themoviedb.org/3/genre/movie/list?api_key=180223961313acb0a2739bfabe754841&language=it")
      .then( result => {
        console.log(result.data);
-       this.genresArray = result.data.genres;       
+       this.genresArray = result.data.genres;
        return  result.data;
      })
      .catch( error => {
        console.log(error)
        this.errored = true
      } );
+   },
+   filteredGenres(actualGenre){
+     console.log(actualGenre);
+     this.filmsArray = this.filmsArray.filter( (film) => {
+       return film.genres.name === actualGenre.toLowerCase();
+     })
+   },
+   getActualGenre(genre){
+     this.actualGenre = genre;
    }
   }
 });
