@@ -11,6 +11,7 @@ const app = new Vue({
   data:{
     actualSearch: "",
     filmsArray: [],
+    totalfilmsArray: [],
     pictureUrl: "",
     picturesArray: [],
     genresArray:[],
@@ -26,6 +27,7 @@ const app = new Vue({
       })
       .then( result => {
       this.filmsArray = result.data.results;
+      this.totalfilmsArray = result.data.results;
       return result.data.results;
     })
     .catch( error => {
@@ -51,8 +53,8 @@ const app = new Vue({
    filteredGenres(actualGenre){
      console.log(actualGenre);
      console.log(this.filmsArray);
-     this.filmsArray = this.filmsArray.filter( (film) => {
-       return film.genre_ids.includes(actualGenre) ;
+     this.filmsArray = this.totalfilmsArray.filter( (film) => {
+         return film.genre_ids.includes(actualGenre) ;
      })
    },
    getActualGenre(genre){
@@ -60,20 +62,3 @@ const app = new Vue({
    }
   }
 });
-
-// seriesSrc(){
-//   axios.get("https://api.themoviedb.org/3/search/tv" , {
-//     params: {
-//       api_key: "180223961313acb0a2739bfabe754841",
-//       query: this.actualSearch,
-//     }
-//   })
-//   .then( result => {
-//   this.filmsArray = this.results.concat(result);
-//   return this.results.concat(result);
-// })
-// .catch( error => {
-//   console.log(error)
-//   this.errored = true
-// } );
-// },
