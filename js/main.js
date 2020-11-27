@@ -50,8 +50,9 @@ const app = new Vue({
    },
    filteredGenres(actualGenre){
      console.log(actualGenre);
+     console.log(this.filmsArray);
      this.filmsArray = this.filmsArray.filter( (film) => {
-       return film.genres.name === actualGenre.toLowerCase();
+       return film.genre_ids === actualGenre;
      })
    },
    getActualGenre(genre){

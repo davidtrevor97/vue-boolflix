@@ -21,7 +21,7 @@
         <div class="genres">
           <h2>Generi</h2>
           <ul >
-            <li @click="getActualGenre(genre.name),filteredGenres(actualGenre)" v-for="genre in genresArray" :value="genre.name">
+            <li @click="getActualGenre(genre.id),filteredGenres(actualGenre)" v-for="genre in genresArray" :value="genre.name">
               <i class="fas fa-circle-notch"></i>
               {{genre.name}}
             </li>
