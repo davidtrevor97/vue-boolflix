@@ -10,12 +10,22 @@
     <div class="app">
       <header>
         <div >
-          <input v-model="actualSearch" type="text" v-on:keyup.enter="movieSrc()" >
+          <input v-model="actualSearch" type="text" v-on:keyup.enter="movieSrc(),getGenres()" >
           <i class="fas fa-search" @click="movieSrc()"></i>
         </div>
       </header>
-      <div class="placeholder">
+      <div class="sidebar">
+        <div class="typeOf">
 
+        </div>
+        <div class="genres">
+          <h2>Generi</h2>
+          <ul>
+            <li v-for="genre in genresArray" >{{genre.name}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="placeholder">
       </div>
       <div class="container">
         <ul>
@@ -23,7 +33,7 @@
             <div class="posterContainer">
               <div class="">
                 Overview: {{film.overview}}
-              </div>          
+              </div>
               <img v-if="film.poster_path" id="moviePoster" :src="'https://image.tmdb.org/t/p/'+'w300'+film.poster_path">
               <img v-else src="./img/download.png" alt="">
             </div>

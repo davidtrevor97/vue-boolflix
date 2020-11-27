@@ -13,6 +13,7 @@ const app = new Vue({
     filmsArray: [],
     pictureUrl: "",
     picturesArray: [],
+    genresArray:[],
   },
   methods:{
     movieSrc(){
@@ -34,6 +35,18 @@ const app = new Vue({
    getStars(vote){
        return Math.floor(vote / 2);
    },
+   getGenres(){
+     axios.get("https://api.themoviedb.org/3/genre/movie/list?api_key=180223961313acb0a2739bfabe754841&language=it")
+     .then( result => {
+       console.log(result.data);
+       this.genresArray = result.data.genres;       
+       return  result.data;
+     })
+     .catch( error => {
+       console.log(error)
+       this.errored = true
+     } );
+   }
   }
 });
 
